@@ -1,0 +1,27 @@
+To install cypress via terminal:
+npm install cypress --save-dev
+
+
+Please place the numberValidation.cy.js file under e2e folder
+
+update and the replace existing code in the commands.js file with the following code:
+
+Cypress.Commands.add('isValidateSAPhoneNumber', (phoneNumber) => {
+    const saPhoneNumberRegex = /^(?:\+27|27)|0[0-8][0-9]{8}$/;
+  
+    if (saPhoneNumberRegex.test(phoneNumber)) {
+      cy.log(`Cellphone number ${phoneNumber} is a valid.`);
+    } else {
+      cy.log(`Cellphone number ${phoneNumber} is invalid.`);
+    }
+  });
+  
+
+To execute on headless mode: 
+npx cypress run --spec cypress/e2e/numberValidation.cy.js --browser chrome
+
+To execute on headed mode:
+npx cypress open
+
+wait for the GUI then click on the spec file: numberValidation.cy.js
+
